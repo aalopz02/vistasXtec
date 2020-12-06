@@ -1,0 +1,52 @@
+<div class="background">
+    <h1>
+      {{title}}
+    </h1>
+    <button (click)="crearCurso()" class="btn">
+      {{ crearcurso ? 'No Crear Curso' : 'Crear Curso'}}
+    </button>
+  
+    <button (click)="vc()" class="btn">
+      {{ verc ? 'Esconder Cursos' : 'Visualizar Cursos'}}
+    </button>
+  
+    <div *ngIf="crearcurso">
+      <form  (submit)="ncurso(codigo, curso, creditos, carrera)">
+        <input class ="inputs" #codigo type="text" name="codcurso" placeholder="codigo">
+      </form>
+  
+      <form (submit)="ncurso(codigo, curso, creditos, carrera)">
+        <input class ="inputs" #curso type="text" name="nomcurso" placeholder="curso">
+      </form>
+  
+      <form (submit)="ncurso(codigo, curso, creditos, carrera)">
+        <input class ="inputs" #creditos type="text" name="creditos" placeholder="creditos">
+      </form>
+  
+      <form (submit)="ncurso(codigo, curso, creditos, carrera)">
+        <input class ="inputs" #carrera type="text" name="carrera" placeholder="carrera">
+      </form>
+    </div>
+  
+    <div *ngIf="verificar()" class="list-cursos"  > 
+      <ul *ngFor="let curso of listCodCursos; let i = index">
+        
+        <li >Código: {{listCodCursos[i]}}
+        </li>
+  
+        <li>Curso: {{listNomCursos[i]}}
+        </li>
+  
+        <li>Créditos: {{listCreditos[i]}}
+        </li>
+  
+        <li>Carrera: {{listCarrera[i]}}
+        </li>
+  
+        <button (click)="delCurso(i)" class="btndes">Deshabilitar curso</button>
+  
+      </ul>
+  
+    </div>
+  
+  </div>
