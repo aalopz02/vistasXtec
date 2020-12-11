@@ -1,0 +1,36 @@
+<h1>Gestión de noticias</h1>
+
+<div>
+    <label>Noticias existentes</label>
+
+</div>
+<div>
+    <label>Crear noticia</label>
+    <div>
+        <form [formGroup]="noticiaForm" (submit)="onSubmit()" >
+            <div class="col-md-6 mb-3 mx-auto"  >
+              <label class="labelfont" for="name">Título noticia:</label>
+              <input type="text" class="form-control" formControlName="titulo" id="titulo" #name required>
+            </div>
+            <div class="col-md-6 mb-3 mx-auto"  >
+                <label class="labelfont" for="name">Cuerpo noticia:</label>
+                <input type="text" class="form-control" formControlName="cuerpo" id="cuerpo" #name required>
+            </div>
+            <div class="col-md-6 mb-3 mx-auto"  >
+                <label class="labelfont" for="name">Fecha para publicar noticia:</label>
+                <input type="date" class="form-control" formControlName="fecha" id="fecha" required>
+            </div>
+            <div class="col-md-6 mb-3 mx-auto"  >
+                <label class="labelfont" for="name">Nombre autor:</label>
+                <input type="text" class="form-control"  formControlName="autor" id="autor" #name required>
+            </div>
+            <div class="col-md-6 mb-3 mx-auto"  >
+                <label class="labelfont" for="name">Curso que recibe la noticia:</label>
+                <input type="text" class="form-control"  formControlName="curso" id="curso" #name required>
+            </div>
+           <div class="col-md-6 mb-3 mx-auto" align="center">
+           <button class="btn btn-primary  mx-auto" type="submit" align="center">Crear</button>
+          </div>
+        </form>
+    </div>
+</div>

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "VistasXtec"
+    }
+  },
+  "defaultProject": "VistasXtec",
+  "cli": {
+    "analytics": "e496c612-82a0-4949-9c34-2c007f1ee00e"
+  }
 }
