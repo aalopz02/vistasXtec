@@ -11,6 +11,7 @@ import { StudentMainComponent } from './Student/student-main/student-main.compon
 import { StudentNewsComponent } from './Student/student-news/student-news.component';
 import { StudentSendEvalComponent } from './Student/student-send-eval/student-send-eval.component';
 import { StudentGradesComponent } from './Student/student-grades/student-grades.component';
+import { StudentFileComponent } from './Student/student-file/student-file.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { StudentGradesComponent } from './Student/student-grades/student-grades.
     StudentMainComponent,
     StudentNewsComponent,
     StudentSendEvalComponent,
-    StudentGradesComponent
+    StudentGradesComponent,
+    StudentFileComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),
@@ -31,7 +33,8 @@ import { StudentGradesComponent } from './Student/student-grades/student-grades.
     { path: 'student-main', component: StudentMainComponent},
     { path: 'student-grades', component: StudentGradesComponent },
     { path: 'student-eval', component: StudentSendEvalComponent },
-    { path: 'student-news', component: StudentNewsComponent }
+    { path: 'student-news', component: StudentNewsComponent },
+    { path: 'student-exp', component: StudentFileComponent }
 ], { relativeLinkResolution: 'legacy' }),
     AppRoutingModule
   ],
