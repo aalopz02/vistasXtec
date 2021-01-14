@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,7 @@ import { StudentFileComponent } from './Student/student-file/student-file.compon
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),
+    HttpClientModule,
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
     { path: 'student-docs', component: VisualizeDocsComponent },

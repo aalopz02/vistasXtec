@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StudentCourseService } from './../student-services/student-course.service';
 
 @Component({
   selector: 'app-student-main',
@@ -10,10 +11,16 @@ import { Router } from '@angular/router';
 
 export class StudentMainComponent implements OnInit {
 
+  cursos = [];
   private _curso:string;  
-  constructor(private router:Router) { }
+  constructor(private router:Router, private StudentCourseService: StudentCourseService ) { }
 
   ngOnInit(): void {
+    this.StudentCourseService.getAll("2018999999").subscribe(data =>{
+      this.cursos=data;
+      console.log(data);
+    });
+
   }
 
    get curso(): string {
