@@ -1,26 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GestionCursosComponent } from './gestion-cursos/gestion-cursos.component';
-import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './teacher/index/index.component';
+import { DocumentsComponent } from './teacher/documents/documents.component';
+import { HeadingsComponent } from './teacher/headings/headings.component';
+import { EvaluationComponent } from './teacher/evaluation/evaluation.component';
+import { FolderComponent } from './teacher/documents/folder/folder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GestionCursosComponent
+    LoginComponent,
+    IndexComponent,
+    DocumentsComponent,
+    HeadingsComponent,
+    EvaluationComponent,
+    FolderComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId:'ng-cli-universal'}),
-    RouterModule.forRoot([
-      {path :'gestion-cursos', component : GestionCursosComponent}
-    ]),
-    AppRoutingModule
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,29 @@
+<html>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">XTECDigital</a>
+            <a style="font-size: 15px;" class="navbar-brand" href="#">Teacher</a>
+        </nav>
+    </header>
+    <body>
+        <div class="courses">
+            <h4>Cursos impartidos</h4>
+            <hr>
+            <div class="container-fluid" style="margin-left: 30px; font-size: 16px;">
+                <div class="row">
+                    <div *ngFor="let course of this.cursos" class="col-4">
+                        <b>Nombre:</b> {{course.name}} <br>
+                        <b>Codigo:</b> {{course.code}} <br>
+                        <b>Numero de creditos:</b> {{course.credits}} <br>
+                        <b>Carrera:</b> {{course.carreer}} <br>
+                        <b>Grupo:</b> {{course.group}} <br>
+                        <button type="button" (click)="ToDocuments(course.code)" class="btn btn-info btn-sm mr-1 mt-3">Documentos</button>
+                        <button type="button" (click)="ToHeadings(course.code)" class="btn btn-info btn-sm mr-1 mt-3">Rubros</button>
+                        <button type="button" (click)="ToEvaluation(course.code)" class="btn btn-info btn-sm mr-1 mt-3">Evaluaciones</button>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

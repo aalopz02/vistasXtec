@@ -1,0 +1,5 @@
+{
+    "npm.enableRunFromFolder": true,
+    "npm.exclude": "",
+    "terminal.integrated.automationShell.windows": ""
+}
