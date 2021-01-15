@@ -13,6 +13,7 @@ import { StudentNewsComponent } from './Student/student-news/student-news.compon
 import { StudentSendEvalComponent } from './Student/student-send-eval/student-send-eval.component';
 import { StudentGradesComponent } from './Student/student-grades/student-grades.component';
 import { StudentFileComponent } from './Student/student-file/student-file.component';
+import { StudentDocsComponent } from './Student/student-docs/student-docs.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { StudentFileComponent } from './Student/student-file/student-file.compon
     StudentNewsComponent,
     StudentSendEvalComponent,
     StudentGradesComponent,
-    StudentFileComponent
+    StudentFileComponent,
+    StudentDocsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),

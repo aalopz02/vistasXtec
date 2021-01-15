@@ -12,26 +12,26 @@ import { StudentCourseService } from './../student-services/student-course.servi
 export class StudentMainComponent implements OnInit {
 
   cursos = [];
-  private _curso:string;  
+  codigo:string; 
+  grupo:string; 
+  anno:string; 
+  periodo:string;  
   constructor(private router:Router, private StudentCourseService: StudentCourseService ) { }
 
   ngOnInit(): void {
-    this.StudentCourseService.getAll("2018999999").subscribe(data =>{
+    this.StudentCourseService.getAll("2017000001").subscribe(data =>{
       this.cursos=data;
       console.log(data);
     });
 
   }
 
-   get curso(): string {
-    return this._curso;}
-   set curso(value: string) {
-    this._curso = value;
-}
-  onClick(curso:string){
-    this._curso=curso;
-    console.log(this._curso);
-    this.router.navigateByUrl('/student-docs');
+  onClick(codigo:string,grupo:string,anno:string,periodo:string){
+    this.codigo=codigo;
+    this.grupo=grupo;
+    this.anno=anno;
+    this.periodo=periodo;
+    this.router.navigateByUrl('/student-docs',{ state: { var1: codigo , var2:grupo, var3: anno , var4:periodo} });
   }
 
 }

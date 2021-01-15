@@ -18,13 +18,9 @@
         <div class="row align-items-center h-50">
             <div class="col-6 mx-auto">
                 <div class="jumbotron">
-                    <h1 class="display-5" align="center">Cursos</h1>
-             <ul>
-            <li  (click)="onClick('number 1')"> number 1 </li>
-            <li> number 2</li>
-            <li> number 3 </li>
-            <li> number 4 </li>
-            <li> number 5 </li>
+                    <h1 class="display-5" align="center" >Cursos</h1>
+             <ul class="list-group"  *ngFor="let curso of cursos; let i = index">
+            <li  (click)="onClick(cursos[i].Curso_Codigo,cursos[i].Grupo,cursos[i].Sem_Anno,cursos[i].Sem_Periodo)"> {{cursos[i].Curso_Codigo}} Grupo: {{cursos[i].Grupo}} {{cursos[i].Sem_Anno}}-{{cursos[i].Sem_Periodo}} </li>
         </ul>
                   </div>
             </div>

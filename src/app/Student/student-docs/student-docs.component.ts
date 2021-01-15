@@ -3,12 +3,13 @@ import { StudentFoldersService } from './../student-services/student-folders.ser
 
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-visualize-docs',
-  templateUrl: './visualize-docs.component.html',
-  styleUrls: ['./visualize-docs.component.css']
+  selector: 'app-student-docs',
+  templateUrl: './student-docs.component.html',
+  styleUrls: ['./student-docs.component.css']
 })
-export class VisualizeDocsComponent implements OnInit {
+export class StudentDocsComponent implements OnInit {
 
   carpetas = [];
   codigo = "";
@@ -28,5 +29,4 @@ export class VisualizeDocsComponent implements OnInit {
       console.log(data);
     });
   }
-
 }
