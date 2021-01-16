@@ -12,7 +12,8 @@ export class StudentDocumentsService {
 
   getAll(carpeta:string,grupo:string,codigo:string,periodo:string,anno:string) {
     //esto get para las actividades de un usuario loggeado
-    return this.http.get<any[]>(this.url + `/` + "api/DOCUMENTO/"+ carpeta +"/" + grupo + "/" + codigo + "/" + periodo + "/" + anno );
+    console.log(this.url + `/` + "api/DOCUMENTO/"+ carpeta +"/" + grupo + "/" + codigo + "/" + periodo + "/" + anno)
+    return this.http.get<any[]>(this.url + `/` + "api/DOCUMENTO/"+ carpeta +"/" + grupo + "/" + codigo + "/" + periodo + "/" + anno);
   }
 
 }

@@ -4,7 +4,7 @@
 <div style="    background: url(https://d1csarkz8obe9u.cloudfront.net/posterpreviews/notebook-paper-background-design-template-c114c2ed2104bd8b815cf7fbb2f34f44_screen.jpg?ts=1566601599)" class="page-holder bg-cover">
  
     <div class="text-center">
-        <h1>Curso</h1>
+        <h1>Curso: {{codigo}} Grupo: {{grupo}} {{anno}}-{{periodo}}</h1>
       </div>
 
           <div class="row align-items-center h-50">
@@ -12,18 +12,16 @@
                   <div class="jumbotron" >
                       
                       <h1 class="display-5" align="center">Noticias</h1>
-               <ul>
+               <ul class="list-group"  *ngFor="let noticia of noticias; let i = index">
                 <br>
                 <hr class="style1">
             <br>
-              <li>  number 1 </li>
+                <li>Titulo: {{noticias[i].Titulo}}, Autor: {{noticias[i].Autor}}, Fecha: {{noticias[i].Fecha}} </li>
+              <li> Mensaje: {{noticias[i].Mensaje}}</li>
               <br>
                 <hr class="style1">
             <br>
-              <li> number 2</li>
-              <li> number 3 </li>
-              <li> number 4 </li>
-              <li> number 5 </li>
+            
           </ul>
                     </div>
               </div>

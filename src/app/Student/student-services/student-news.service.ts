@@ -12,7 +12,9 @@ export class StudentNewsService {
 
   getAll(grupo:string,codigo:string,periodo:string,anno:string) {
     //esto get para las actividades de un usuario loggeado
+    console.log(this.url + `/` + "api/NOTICIA/" + grupo + "/" + codigo + "/" + periodo + "/" + anno );
     return this.http.get<any[]>(this.url + `/` + "api/NOTICIA/" + grupo + "/" + codigo + "/" + periodo + "/" + anno );
+    
   }
 }
 

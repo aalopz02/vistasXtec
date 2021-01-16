@@ -34,6 +34,7 @@ import { StudentDocsComponent } from './Student/student-docs/student-docs.compon
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
     { path: 'student-docs', component: VisualizeDocsComponent },
+    { path: 'student-doc', component: StudentDocsComponent },
     { path: 'student-main', component: StudentMainComponent},
     { path: 'student-grades', component: StudentGradesComponent },
     { path: 'student-eval', component: StudentSendEvalComponent },

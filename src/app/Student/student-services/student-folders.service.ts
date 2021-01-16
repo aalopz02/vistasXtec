@@ -5,7 +5,15 @@ import { HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class StudentFoldersService {
+
+  carpeta = "";
+  codigo = "";
+  grupo = "";
+  anno = "";
+  periodo="";
 
   constructor(private http: HttpClient) { }
   url : string = `https://localhost:44337`;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentCourseService } from './../student-services/student-course.service';
+import { StudentDocumentsService } from './../student-services/student-documents.service';
+import { StudentFoldersService } from './../student-services/student-folders.service';
 
 @Component({
   selector: 'app-student-main',
@@ -12,11 +14,8 @@ import { StudentCourseService } from './../student-services/student-course.servi
 export class StudentMainComponent implements OnInit {
 
   cursos = [];
-  codigo:string; 
-  grupo:string; 
-  anno:string; 
-  periodo:string;  
-  constructor(private router:Router, private StudentCourseService: StudentCourseService ) { }
+  private _curso:string;  
+  constructor(private router:Router, private StudentCourseService: StudentCourseService, private StudentFoldersService:StudentFoldersService ) { }
 
   ngOnInit(): void {
     this.StudentCourseService.getAll("2017000001").subscribe(data =>{
@@ -26,12 +25,20 @@ export class StudentMainComponent implements OnInit {
 
   }
 
+   get curso(): string {
+    return this._curso;}
+   set curso(value: string) {
+    this._curso = value;
+}
+
   onClick(codigo:string,grupo:string,anno:string,periodo:string){
-    this.codigo=codigo;
-    this.grupo=grupo;
-    this.anno=anno;
-    this.periodo=periodo;
-    this.router.navigateByUrl('/student-docs',{ state: { var1: codigo , var2:grupo, var3: anno , var4:periodo} });
+    this.StudentFoldersService.codigo=codigo;
+    this.StudentFoldersService.grupo=grupo;
+    this.StudentFoldersService.periodo=periodo;
+    this.StudentFoldersService.anno=anno;
+    console.log(this.StudentFoldersService.anno)
+    
+    this.router.navigateByUrl('/student-docs');
   }
 
 }
