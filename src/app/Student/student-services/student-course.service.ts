@@ -8,6 +8,7 @@ import { HttpParams } from '@angular/common/http';
 
 
 export class StudentCourseService {
+  carnet=""
 
   constructor(private http: HttpClient) { }
   url : string = `https://localhost:44337`;

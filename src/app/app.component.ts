@@ -7,7 +7,7 @@ import { GestionCursosComponent } from './gestion-cursos/gestion-cursos.componen
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title : string 
+  title = 'XTECDigital';
  
 
   constructor() {}

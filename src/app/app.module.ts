@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GestionCursosComponent } from './gestion-cursos/gestion-cursos.component';
@@ -14,10 +15,25 @@ import { StudentSendEvalComponent } from './Student/student-send-eval/student-se
 import { StudentGradesComponent } from './Student/student-grades/student-grades.component';
 import { StudentFileComponent } from './Student/student-file/student-file.component';
 import { StudentDocsComponent } from './Student/student-docs/student-docs.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './teacher/index/index.component';
+import { DocumentsComponent } from './teacher/documents/documents.component';
+import { HeadingsComponent } from './teacher/headings/headings.component';
+import { EvaluationComponent } from './teacher/evaluation/evaluation.component';
+import { FolderComponent } from './teacher/documents/folder/folder.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    IndexComponent,
+    DocumentsComponent,
+    HeadingsComponent,
+    EvaluationComponent,
+    FolderComponent,
     GestionCursosComponent,
     VisualizeDocsComponent,
     NavbarStudentComponent,
@@ -41,7 +57,8 @@ import { StudentDocsComponent } from './Student/student-docs/student-docs.compon
     { path: 'student-news', component: StudentNewsComponent },
     { path: 'student-exp', component: StudentFileComponent }
 ], { relativeLinkResolution: 'legacy' }),
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

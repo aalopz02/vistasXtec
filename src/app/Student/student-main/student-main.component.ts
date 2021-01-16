@@ -13,12 +13,15 @@ import { StudentFoldersService } from './../student-services/student-folders.ser
 
 export class StudentMainComponent implements OnInit {
 
+  carnet="";
   cursos = [];
   private _curso:string;  
-  constructor(private router:Router, private StudentCourseService: StudentCourseService, private StudentFoldersService:StudentFoldersService ) { }
+  constructor(private router:Router, private StudentCourseService: StudentCourseService, private StudentFoldersService:StudentFoldersService ) { 
+    this.carnet=StudentCourseService.carnet;
+  }
 
   ngOnInit(): void {
-    this.StudentCourseService.getAll("2017000001").subscribe(data =>{
+    this.StudentCourseService.getAll(this.carnet).subscribe(data =>{
       this.cursos=data;
       console.log(data);
     });
