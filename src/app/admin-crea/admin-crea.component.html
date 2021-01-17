@@ -9,6 +9,7 @@
     <span>Archivo .csv: </span>
     <span>{{file ? file.name : 'Arrastre el archivo' }}</span>
     <input class="file-input" type="file" (change)="fileChanged($event)">
+    <button class="btn-primary" (click)="done()" >Subir Archivo </button>
 </div>
 
 <form [formGroup]="semestre" (ngSubmit)="semestreSubmit()">
@@ -50,8 +51,8 @@
         </div>
         <div>
             <select formControlName="profesor1" id="profesor1">
-                <option *ngFor="let periodo of profesores; let i = index" [value]="profesores[i].cedula">
-                    {{profesores[i].cedula}} : {{profesores[i].nombre}}
+                <option *ngFor="let periodo of profesores; let i = index" [value]="profesores[i][1]._value">
+                    {{profesores[i][1]._value}} : {{profesores[i][2]._value}}
                 </option>
              </select>
         </div>
@@ -62,8 +63,8 @@
         </div>
         <div>
             <select formControlName="profesor2" id="profesor2">
-                <option *ngFor="let periodo of profesores; let i = index" [value]="profesores[i].cedula">
-                    {{profesores[i].cedula}} : {{profesores[i].nombre}}
+                <option *ngFor="let periodo of profesores; let i = index" [value]="profesores[i][1]._value">
+                    {{profesores[i][1]._value}} : {{profesores[i][2]._value}}
                 </option>
              </select>
         </div>
@@ -73,8 +74,8 @@
         <div>
             <label for="carnet">Carnet</label>
                 <select formControlName="carnet" id="carnet">
-                    <option *ngFor="let carnetEt of estudiantes; let i = index" [value]="estudiantes[i]">
-                        {{estudiantes[i]}}
+                    <option *ngFor="let carnetEt of estudiantes; let i = index" [value]="estudiantes[i][1]._value">
+                        {{estudiantes[i][1]._value}}
                     </option>
                  </select>
                  <button class="btn-primary">Agregar estudiante</button>
@@ -90,8 +91,6 @@
     </div>
 </form>
 
-<button class="btn-primary" (click)="done()" >Terminar </button>
-
 <div *ngIf="flagSemestreCreado">
     <span>Cursos creados: </span>
     <div class="background-aux"  *ngFor="let cursoModel of cursosCreados; let i = index">
@@ -106,3 +105,5 @@
     </div>
 </div>
 </div>
+
+<button class="btn-primary" (click)="subirSemestre()" >Terminar Semestre </button>

@@ -1,8 +1,8 @@
 
 export class semestreModel {
 
-    periodo: number;
-    anno: number;
+    periodo: string;
+    anno: string;
 
     public constructor(init?: Partial<semestreModel>) {
         Object.assign(this, init);

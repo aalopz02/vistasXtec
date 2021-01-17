@@ -41,15 +41,17 @@ export class LoginComponent implements OnInit {
     
     this.userLoginService.LogIn(this.userType, formData.userID).subscribe((resp: any) => {
       const answer = resp;
-
+      
       if (answer == null){
         console.log('Usuario no existe');
         this.error = 'Usuario no existe';
         return;
       }
       const EncryPass = Md5.hashStr(formData.password);
-      
+      console.log(EncryPass);
+
       if(this.userType == 2){
+        console.log(answer[4]._value);
         if(EncryPass == answer[4]._value){
           this.router.navigate(['t-index']);
         }else{

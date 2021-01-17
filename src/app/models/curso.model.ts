@@ -2,9 +2,9 @@
 export class cursoModel {
 
     codigoCurso: string;
-    numeroGrupo: number;
-    profesor1: number;
-    profesor2: number;
+    numeroGrupo: string;
+    profesor1: string;
+    profesor2: string;
     grupo : any[]; 
 
     public constructor(init: Partial<cursoModel>,lista : any[]) {

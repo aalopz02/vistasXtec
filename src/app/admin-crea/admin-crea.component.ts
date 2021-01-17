@@ -9,6 +9,10 @@ import { semestreModel } from '../models/semestre.model';
 import { cursoModel } from '../models/curso.model';
 import { profesorModel } from '../models/profesor.model';
 import { excelService } from '../services/excel.service';
+import { ProfesorService } from '../services/profesores-service';
+import { EstudianteService } from '../services/estudiante.service';
+import { CursosService } from '../services/cursos.service';
+import { SemestreService } from '../services/crearSemestre.service';
 
 /**
  * Ng module
@@ -35,23 +39,44 @@ import { excelService } from '../services/excel.service';
 
     error: string;
 
-    profesores : profesorModel[] =  [new profesorModel({'nombre':'nombre1','cedula':1234}), new profesorModel({'nombre':'nombre222','cedula':2222})];
-    estudiantes : number[] = [12,34,56,78,90];
+    profesores  =  [];
+    estudiantes = [];
     periodosDef = ['1','2','V'];
 
-    codCursPrueb = ['11','22'];
+    codCursPrueb = [];
 
     file:any;
     excel : string | ArrayBuffer;
 
   constructor( private formBuilder: FormBuilder,
       private router: Router,
-      private loadfile: excelService){}
+      private loadfile: excelService,
+      private profesorService: ProfesorService,
+      private estudianteService : EstudianteService,
+      private cursosService : CursosService,
+      private semestreService : SemestreService
+      ){}
   /**
    * on init
    */
   ngOnInit() {
   // Cargar datos al form
+
+      this.profesorService.getAll().subscribe(data =>{
+        this.profesores=data;
+        console.log(this.profesores[0]);
+      });
+
+      this.estudianteService.getAll().subscribe(data =>{
+        this.estudiantes=data;
+        console.log(this.estudiantes[0]);
+      });
+
+      this.cursosService.getAll().subscribe(data =>{
+        this.codCursPrueb=data;
+        console.log(this.codCursPrueb[0]);
+      });
+
       this.semestre = this.formBuilder.group({
         anno: ['', Validators.required],
         periodo: ['', Validators.required] 
@@ -142,6 +167,12 @@ import { excelService } from '../services/excel.service';
         this.error = "";
       }
     
+    subirSemestre(){
+      console.log("semestre");
+      this.cursosCreados.forEach(element => {
+        this.semestreService.postCurso(element,this.semestreCreado[0]).subscribe(data => this.error=data)
+      });
+    }
 
     done(){
         this.loadfile.cargarArchivo(this.excel);
