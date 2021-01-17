@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   userType: number = 1; 
   LogInForm: FormGroup;
-
+  error: string;
   constructor(private formB: FormBuilder, private router: Router, private userLoginService: UserLoginService,private StudentCourseService:StudentCourseService) { 
     this.LogInForm = this.formB.group({
     userID: [''],
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
 
       if (answer == null){
         console.log('Usuario no existe');
+        this.error = 'Usuario no existe';
         return;
       }
       const EncryPass = Md5.hashStr(formData.password);
@@ -53,6 +54,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['t-index']);
         }else{
           console.log('Contrasena incorrecta');
+          this.error = 'Contrasena incorrecta';
         }  
       }else if(this.userType == 3){
         if(EncryPass == answer[5]._value){
@@ -61,6 +63,7 @@ export class LoginComponent implements OnInit {
           console.log('Contrasena correcta');
         }else{
           console.log('Contrasena incorrecta');
+          this.error = 'Contrasena incorrecta';
         }
       }else{
         if(formData.password == answer[2]._value){
@@ -68,6 +71,7 @@ export class LoginComponent implements OnInit {
           console.log('Contrasena correcta');
         }else{
           console.log('Contrasena incorrecta');
+          this.error = 'Contrasena incorrecta';
         }
       }
       

@@ -13,7 +13,7 @@ export class VentanaAdminComponent implements OnInit {
     inicializar_semestre : string ;
   
     constructor(private router: Router) {
-        this.router.navigateByUrl('/admin-crea');
+       
     }
   
     ngOnInit(): void {
