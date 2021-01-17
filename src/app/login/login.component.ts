@@ -41,9 +41,12 @@ export class LoginComponent implements OnInit {
     
     this.userLoginService.LogIn(this.userType, formData.userID).subscribe((resp: any) => {
       const answer = resp;
-      const EncryPass = Md5.hashStr(formData.password);
-      
 
+      if (answer == null){
+        console.log('Usuario no existe');
+        return;
+      }
+      const EncryPass = Md5.hashStr(formData.password);
       
       if(this.userType == 2){
         if(EncryPass == answer[4]._value){
@@ -61,6 +64,7 @@ export class LoginComponent implements OnInit {
         }
       }else{
         if(formData.password == answer[2]._value){
+          this.router.navigateByUrl('ventana-admin');
           console.log('Contrasena correcta');
         }else{
           console.log('Contrasena incorrecta');

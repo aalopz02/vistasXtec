@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="background">
+<div *ngIf="error" class="msg-error">{{error}}</div>
+
+<h1 class="background">Crear semestre</h1>
+
+<div>
+    <span>Archivo .csv: </span>
+    <span>{{file ? file.name : 'Arrastre el archivo' }}</span>
+    <input class="file-input" type="file" (change)="fileChanged($event)">
+</div>
+
+<form [formGroup]="semestre" (ngSubmit)="semestreSubmit()">
+    <div class="form-group">
+        <label for="anno">Año</label>
+        <input type="text" formControlName="anno" class="form-control" />
+    </div>
+    <div>
+        <label for="periodo">Periodo</label>
+            <select formControlName="periodo" id="periodos">
+                <option *ngFor="let periodo of periodosDef; let i = index" [value]="periodosDef[i]">
+                    {{periodosDef[i]}}
+                </option>
+             </select>
+    </div>
+    <div class="form-group">
+        <button class="btn-primary">Crear Semestre</button>
+    </div>
+</form>
+
+<form *ngIf="flagSemestreCreado" [formGroup]="curso" (ngSubmit)="cursoSubmit()">
+
+    <div class="form-group">
+        <label for="codigoCurso">Codigo Curso</label>
+            <select formControlName="codigoCurso" id="codigoCurso">
+                <option *ngFor="let codigoCurso of codCursPrueb; let i = index" [value]="codCursPrueb[i]">
+                    {{codCursPrueb[i]}}
+                </option>
+             </select>
+    </div>
+
+    <div class="form-group">
+        <label for="numeroGrupo">Numero Grupo</label>
+        <input type="text" formControlName="numeroGrupo" class="form-control"  />
+    </div>
+    <div>
+        <div>
+            <label for="profesor1">Profesor</label>
+        </div>
+        <div>
+            <select formControlName="profesor1" id="profesor1">
+                <option *ngFor="let periodo of profesores; let i = index" [value]="profesores[i].cedula">
+                    {{profesores[i].cedula}} : {{profesores[i].nombre}}
+                </option>
+             </select>
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="profesor1">Profesor extra</label>
+        </div>
+        <div>
+            <select formControlName="profesor2" id="profesor2">
+                <option *ngFor="let periodo of profesores; let i = index" [value]="profesores[i].cedula">
+                    {{profesores[i].cedula}} : {{profesores[i].nombre}}
+                </option>
+             </select>
+        </div>
+            
+    </div>
+    <form [formGroup]="grupo" (ngSubmit)="grupoSubmit()">
+        <div>
+            <label for="carnet">Carnet</label>
+                <select formControlName="carnet" id="carnet">
+                    <option *ngFor="let carnetEt of estudiantes; let i = index" [value]="estudiantes[i]">
+                        {{estudiantes[i]}}
+                    </option>
+                 </select>
+                 <button class="btn-primary">Agregar estudiante</button>
+        </div>
+        <div class="background-aux">
+            <option *ngFor="let carnetEt of grupos; let i = index" [value]="grupos[i]">
+                {{grupos[i].carnet}}
+            </option>
+        </div>
+    </form>
+    <div class="form-group">
+        <button class="btn-primary">Agregar Curso</button>
+    </div>
+</form>
+
+<button class="btn-primary" (click)="done()" >Terminar </button>
+
+<div *ngIf="flagSemestreCreado">
+    <span>Cursos creados: </span>
+    <div class="background-aux"  *ngFor="let cursoModel of cursosCreados; let i = index">
+        <div class="background-aux">Codigo de curso: {{cursosCreados[i].codigoCurso}}</div>
+        <div class="background-aux">Numero de grupo: {{cursosCreados[i].numeroGrupo}}</div>
+        <div class="background-aux">Profesor1: {{cursosCreados[i].profesor1}}</div>
+        <div class="background-aux">Profesor2: {{cursosCreados[i].profesor2}}</div>
+        <div class="background-aux">Estudiantes: </div>
+        <div class="background-aux" *ngFor="let carnet of cursosCreados[i].grupo; let j = index">
+            <div class="background-aux">Carnet: {{cursosCreados[i].grupo[j].carnet}}</div>
+        </div>
+    </div>
+</div>
+</div>
