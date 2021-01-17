@@ -15,69 +15,19 @@
     </div>
 
 
-        <div class="row align-items-center h-2">
+        <div class="row align-items-center h-2" *ngFor="let  nota of notas; let i = index">
             <div class="col-6 mx-auto">
                 <div class="jumbotron">
-                    <h1 class="display-5" align="center">Curso</h1>
+                    <h1 class="display-5" align="center">Curso: {{notas[i].Curso_Codigo}}</h1>
              <ul>
-            <li > Nota:  90 </li>
-            <li> Periodo: 2020-2</li>
-            <li> Estado: Aprobado </li>
+            <li > Grupo:  {{notas[i].Curso_Grupo}} </li>
+            <li > Nota:  {{notas[i].Nota}} </li>
+            <li> Periodo: {{notas[i].Sem_Periodo}}-{{notas[i].Sem_Anno}}</li>
+            <li> Estado: {{notas[i].Estado}} </li>
         </ul>
                   </div>
             </div>
         </div>
 
-        <div class="row align-items-center h-2">
-            <div class="col-6 mx-auto">
-                <div class="jumbotron">
-                    <h1 class="display-5" align="center">Curso</h1>
-             <ul>
-            <li > Nota:  90 </li>
-            <li> Periodo: 2020-2</li>
-            <li> Estado: Aprobado </li>
-        </ul>
-                  </div>
-            </div>
-        </div>
-
-        <div class="row align-items-center h-2">
-            <div class="col-6 mx-auto">
-                <div class="jumbotron">
-                    <h1 class="display-5" align="center">Curso</h1>
-             <ul>
-            <li > Nota:  90 </li>
-            <li> Periodo: 2020-2</li>
-            <li> Estado: Aprobado </li>
-        </ul>
-                  </div>
-            </div>
-        </div>
-
-        <div class="row align-items-center h-2">
-            <div class="col-6 mx-auto">
-                <div class="jumbotron">
-                    <h1 class="display-5" align="center">Curso</h1>
-             <ul>
-            <li > Nota:  90 </li>
-            <li> Periodo: 2020-2</li>
-            <li> Estado: Aprobado </li>
-        </ul>
-                  </div>
-            </div>
-        </div>
-
-        <div class="row align-items-center h-2">
-            <div class="col-6 mx-auto">
-                <div class="jumbotron">
-                    <h1 class="display-5" align="center">Curso</h1>
-             <ul>
-            <li > Nota:  90 </li>
-            <li> Periodo: 2020-2</li>
-            <li> Estado: Aprobado </li>
-        </ul>
-                  </div>
-            </div>
-        </div>
         
     </div>

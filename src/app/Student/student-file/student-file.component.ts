@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentCourseService } from './../student-services/student-course.service';
+import { StudentExpService } from './../student-services/student-exp.service';
 
 @Component({
   selector: 'app-student-file',
@@ -10,11 +11,16 @@ import { StudentCourseService } from './../student-services/student-course.servi
 export class StudentFileComponent implements OnInit {
 
   carnet="";
-  constructor(private router:Router, private StudentCourseService: StudentCourseService) { 
+  notas=[];
+  constructor(private router:Router, private StudentCourseService: StudentCourseService,private StudentExpService:StudentExpService) { 
     this.carnet=StudentCourseService.carnet;
   }
 
   ngOnInit(): void {
+    this.StudentExpService.getAll(this.carnet).subscribe(data =>{
+      this.notas=data;
+      console.log(data);
+    });
   }
 
 }

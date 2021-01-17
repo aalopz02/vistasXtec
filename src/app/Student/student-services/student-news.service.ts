@@ -8,7 +8,7 @@ import { HttpParams } from '@angular/common/http';
 export class StudentNewsService {
 
   constructor(private http: HttpClient) { }
-  url : string = `https://localhost:44337`;
+  url : string = `http://3.138.203.114`;
 
   getAll(grupo:string,codigo:string,periodo:string,anno:string) {
     //esto get para las actividades de un usuario loggeado

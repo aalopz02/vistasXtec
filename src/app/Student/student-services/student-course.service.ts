@@ -11,7 +11,7 @@ export class StudentCourseService {
   carnet=""
 
   constructor(private http: HttpClient) { }
-  url : string = `https://localhost:44337`;
+  url : string = `http://3.138.203.114`;
 
   getAll(carnet:string) {
     //esto get para las actividades de un usuario loggeado
