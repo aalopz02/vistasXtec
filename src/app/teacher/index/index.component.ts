@@ -69,7 +69,7 @@ export class IndexComponent implements OnInit {
         
         this.teacherHeadingsService.headings.push(heading);
       }
-      console.log(this.teacherHeadingsService.headings);
+      
 
       this.router.navigate(['t-index/headings', course.Curso_Codigo]);
       

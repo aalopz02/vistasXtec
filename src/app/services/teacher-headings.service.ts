@@ -24,4 +24,32 @@ export class TeacherHeadingsService {
 
   }
 
+  createNewHeading(newHeadingName: string, headingValue: number){
+
+    const newHeading = {
+      nombre: newHeadingName,
+      porcentaje: headingValue,
+      curso_Grupo: this.courseGroup,
+      curso_Codigo: this.courseCode,
+      sem_Periodo: this.semCourse,
+      sem_Anno: this.yearCourse,
+    }
+    console.log(newHeading);
+    return this.http.post(this.headingApiAdress+'create', newHeading)
+  }
+
+
+  updateHeading(heading: any){
+    const headingToUpdate = {
+      nombre: heading.name,
+      porcentaje: heading.porc,
+      curso_Grupo: this.courseGroup,
+      curso_Codigo: this.courseCode,
+      sem_Periodo: this.semCourse,
+      sem_Anno: this.yearCourse,
+    }
+    console.log(headingToUpdate);
+    return this.http.put(this.headingApiAdress+'update', headingToUpdate);
+  }
+
 }

@@ -95,4 +95,29 @@ export class TeacherDocumentsService {
 
     return this.http.post(this.folderDataApiAdress+'create', docTocreate);
   }
+
+
+  deleteDocument(doc: any){
+
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        nombre: doc.Nombre,
+        data: doc.Data,
+        tamanno: doc.Tamanno,
+        fecha_Subida: doc.Fecha_Subida,
+        carpeta_Nombre: this.folderIn,
+        curso_Grupo: this.courseGroup,
+        curso_Codigo: this.courseCode,
+        sem_Periodo: this.semCourse,
+        sem_Anno: this.yearCourse,
+      },
+    };
+
+    console.log(options.body);
+    return this.http.delete(this.folderDataApiAdress+'delete', options);
+
+  }
 }

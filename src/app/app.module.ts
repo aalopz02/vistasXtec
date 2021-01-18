@@ -16,7 +16,7 @@ import { StudentGradesComponent } from './Student/student-grades/student-grades.
 import { StudentFileComponent } from './Student/student-file/student-file.component';
 import { StudentDocsComponent } from './Student/student-docs/student-docs.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './teacher/index/index.component';
 import { DocumentsComponent } from './teacher/documents/documents.component';
 import { HeadingsComponent } from './teacher/headings/headings.component';
@@ -47,6 +47,8 @@ import { FolderComponent } from './teacher/documents/folder/folder.component';
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
     { path: 'student-docs', component: VisualizeDocsComponent },

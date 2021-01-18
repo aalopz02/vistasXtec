@@ -9,18 +9,38 @@
         <h4 class="ml-3 mt-3">Rubros del curso</h4>
         <hr>
         <div class="container-fluid ml-4 mt-2">
-            <div class="row" *ngFor="let heading of headings">
-                <a  href="javascript:undefined" style="font-size: 19px;" (click)="folderData(folder)">
-                    <svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
-                        <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
-                    </svg>
-                <b>{{heading.Nombre}}</b></a> 
-                  <br>
-                <button (click)="deleteFolder(folder)" *ngIf="predefinedFolder.indexOf(folder) == -1" style="position: absolute; margin-left: 90%; padding: 0 0 0 0;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
-                </svg></button>
+            <div class="row" *ngFor="let item of this.headings">
+                <div class="col-sm">
+                    <a  href="javascript:undefined" style="font-size: 19px;">
+                        <svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
+                            <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
+                        </svg>
+                    <b>{{item.name}} </b></a> 
+                </div>
+                <div class="col-sm" *ngIf="!editHeading">
+                    <b>{{item.porc}} %</b>
+                </div>
+                <div class="col-sm" *ngIf="editHeading">
+                    <input id="{{item.name}}" class="form-control form-control-sm w-25" style="padding: 0 0 0 0;" type="number" value="{{item.porc}}" aria-label=".form-control-sm example">       
+                </div>
+                <div class="col-sm" *ngIf="!editHeading">
+                    <button type="button" (click)="goToEvaluation(item)" class="btn-sm btn-secondary">Evaluaciones</button>
+                </div>
+                <br>
             </div>
         </div>
-        <hr>
+        <div class="container-fluid ml-4 mt-2">
+            <div class="row" *ngIf="editHeading">
+                <div class="col">
+                    <input id="headName" class="form-control form-control-sm w-50"  type="text" placeholder="Nombre del rubro" aria-label=".form-control-sm example">
+                </div>
+                <div class="col">
+                    <input id="headValue" class="form-control form-control-sm w-50" type="text" placeholder="Valor del rubro" aria-label=".form-control-sm example">
+                </div>
+            </div>
+        </div>
+        <button *ngIf="editHeading" type="button" (click)="saveHeadings()" class="btn btn-primary ml-2 mt-5">Completar</button>
+        <button *ngIf="editHeading" type="button" (click)="cancelSaveHeadings()" class="btn btn-primary ml-2 mt-5">Cancelar</button>
+        <button type="button" (click)="newHeading()" class="btn btn-secondary ml-2 mt-5">Agregar Rubro</button>
     </body>
 </html>
