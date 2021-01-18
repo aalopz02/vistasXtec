@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StudentCourseService } from './../student-services/student-course.service';
 import { StudentExpService } from './../student-services/student-exp.service';
+import { StudentService } from './../student-services/student.service';
 
 @Component({
   selector: 'app-student-file',
@@ -12,8 +12,8 @@ export class StudentFileComponent implements OnInit {
 
   carnet="";
   notas=[];
-  constructor(private router:Router, private StudentCourseService: StudentCourseService,private StudentExpService:StudentExpService) { 
-    this.carnet=StudentCourseService.carnet;
+  constructor(private router:Router, private StudentService: StudentService,private StudentExpService:StudentExpService) { 
+    this.carnet=StudentService.carnet;
   }
 
   ngOnInit(): void {

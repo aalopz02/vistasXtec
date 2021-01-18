@@ -22,7 +22,7 @@ import { EvaluationComponent } from './teacher/evaluation/evaluation.component';
 import { FolderComponent } from './teacher/documents/folder/folder.component';
 import { VentanaAdminComponent } from './ventana-admin/ventana-admin.component';
 import { AdminCrea } from './admin-crea/admin-crea.component';
-
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,7 @@ import { AdminCrea } from './admin-crea/admin-crea.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    PdfViewerModule,
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
     { path: 'student-docs', component: VisualizeDocsComponent },

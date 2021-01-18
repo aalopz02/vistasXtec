@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLoginService } from '../services/user-login.service';
 import {Md5} from 'ts-md5/dist/md5';
-import { StudentCourseService } from './../Student/student-services/student-course.service';
+import { StudentService } from './../Student/student-services/student.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   userType: number = 1; 
   LogInForm: FormGroup;
 
-  constructor(private formB: FormBuilder, private router: Router, private userLoginService: UserLoginService,private StudentCourseService:StudentCourseService) { 
+  constructor(private formB: FormBuilder, private router: Router, private userLoginService: UserLoginService,private StudentService:StudentService) { 
     this.LogInForm = this.formB.group({
     userID: [''],
     password: ['']
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       }else if(this.userType == 3){
         if(EncryPass == answer[5]._value){
           this.router.navigateByUrl('/student-main');
-          this.StudentCourseService.carnet=formData.userID;
+          this.StudentService.carnet=formData.userID;
           console.log('Contrasena correcta');
         }else{
           console.log('Contrasena incorrecta');

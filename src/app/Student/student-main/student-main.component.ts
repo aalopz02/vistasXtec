@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { StudentCourseService } from './../student-services/student-course.service';
 import { StudentDocumentsService } from './../student-services/student-documents.service';
 import { StudentFoldersService } from './../student-services/student-folders.service';
+import { StudentService } from './../student-services/student.service';
 
 @Component({
   selector: 'app-student-main',
@@ -16,8 +17,9 @@ export class StudentMainComponent implements OnInit {
   carnet="";
   cursos = [];
   private _curso:string;  
-  constructor(private router:Router, private StudentCourseService: StudentCourseService, private StudentFoldersService:StudentFoldersService ) { 
-    this.carnet=StudentCourseService.carnet;
+  constructor(private router:Router, private StudentCourseService: StudentCourseService, private StudentFoldersService:StudentFoldersService, private StudentService: StudentService) {
+    console.log(StudentService.carnet); 
+    this.carnet=StudentService.carnet;
   }
 
   ngOnInit(): void {
