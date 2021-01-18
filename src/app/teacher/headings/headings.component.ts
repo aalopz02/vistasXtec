@@ -11,6 +11,7 @@ export class HeadingsComponent implements OnInit {
 
   headings: any[] = [];
   editHeading: boolean = false;
+  editMode: boolean = false;
   
   newHeadingName: string;
   
@@ -32,17 +33,21 @@ export class HeadingsComponent implements OnInit {
 
   newHeading(){
     this.editHeading = true;
+    this.editMode = false;
 
   }
 
   saveHeadings(){
 
-    
+    var total = 0;
 
-    this.newHeadingName = (<HTMLInputElement>document.getElementById('headName')).value;
+    if(this.editHeading){
+      this.newHeadingName = (<HTMLInputElement>document.getElementById('headName')).value;
 
-    var total = +(<HTMLInputElement>document.getElementById('headValue')).value;
-    var newHeadingValue = +(<HTMLInputElement>document.getElementById('headValue')).value;
+      total += +(<HTMLInputElement>document.getElementById('headValue')).value;
+      var newHeadingValue = +(<HTMLInputElement>document.getElementById('headValue')).value;
+
+    }
 
     var newHeadingsValues = [];
 
@@ -71,12 +76,17 @@ export class HeadingsComponent implements OnInit {
     
   }
 
-  async updateHeading(heading: any){
+  updateHeading(heading: any){
     this.teacherHeadingsService.updateHeading(heading).subscribe((resp: any) => {
       console.log(resp);
     })
   }
 
+
+  editHeadingMode(){
+    this.editMode = true;
+    this.editHeading = false;
+  }
 
 
    completeHeadingCreation(newHeadingValue: number){
@@ -94,6 +104,7 @@ export class HeadingsComponent implements OnInit {
 
   cancelSaveHeadings(){
     this.editHeading = false;
+    this.editMode = false;
   }
 
   goToEvaluation(heading: any){
@@ -108,7 +119,6 @@ export class HeadingsComponent implements OnInit {
     return this.teacherEvaluationService.getEvaluations().subscribe((resp:any) => {
       console.log(resp);
     })
-
 
   }
 
