@@ -7,7 +7,7 @@ import { semestreModel } from '../models/semestre.model';
   providedIn: 'root'
 })
 export class SemestreService {
-  address: string = 'https://localhost:44347/api/';
+  address: string = 'http://3.138.203.114/api/';
 
   constructor(private http: HttpClient) { }
 

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CarreraService {
-  address: string = 'https://localhost:44347/api/';
+  address: string = 'http://3.138.203.114/api/';
 
   constructor(private http: HttpClient) { }
 
@@ -14,5 +14,9 @@ export class CarreraService {
     return this.http.get(this.address+controller);
     }
   
+  post(nombreCarrera : string) : any {
+    const controller = 'CARRERA/create/';
+    return this.http.post(this.address+controller+nombreCarrera,{});
+  }  
 
 }

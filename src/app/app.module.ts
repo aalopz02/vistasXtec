@@ -22,6 +22,8 @@ import { EvaluationComponent } from './teacher/evaluation/evaluation.component';
 import { FolderComponent } from './teacher/documents/folder/folder.component';
 import { VentanaAdminComponent } from './ventana-admin/ventana-admin.component';
 import { AdminCrea } from './admin-crea/admin-crea.component';
+import { AgregarPersonasComponent } from './agregar-personas/agregar-personas.component';
+import { AgregarCarrerasComponent } from './agregar-carreras/agregar-carreras.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { AdminCrea } from './admin-crea/admin-crea.component';
     StudentFileComponent,
     StudentDocsComponent,
     VentanaAdminComponent,
-    AdminCrea
+    AdminCrea,
+    AgregarPersonasComponent,
+    AgregarCarrerasComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),
@@ -60,7 +64,9 @@ import { AdminCrea } from './admin-crea/admin-crea.component';
     { path: 'student-news', component: StudentNewsComponent },
     { path: 'student-exp', component: StudentFileComponent },
     { path: 'ventana-admin', component: VentanaAdminComponent },
-    { path: 'admin-crea', component: AdminCrea }
+    { path: 'admin-crea', component: AdminCrea },
+    { path: 'agregar-personas', component: AgregarPersonasComponent },
+    { path: 'agregar-carreras', component: AgregarCarrerasComponent }
 ], { relativeLinkResolution: 'legacy' }),
     AppRoutingModule,
     

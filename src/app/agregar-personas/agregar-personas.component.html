@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="background">
+<div *ngIf="error" class="msg-error">{{error}}</div>
+
+<h1 class="background">Agregar Profesor</h1>
+
+<form [formGroup]="profesor" (ngSubmit)="profesorSubmit()">
+
+    <div class="form-group">
+        <label for="nombreProfesor">Nombre</label>
+        <input type="text" formControlName="nombreProfesor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="cedulaProfesor">Cédula</label>
+        <input type="text" formControlName="cedulaProfesor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="correoProfesor">Correo</label>
+        <input type="text" formControlName="correoProfesor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="contrasennaProfesor">Contraseña</label>
+        <input type="text" formControlName="contrasennaProfesor" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn-primary">Agregar Profesor</button>
+    </div>
+
+</form>
+
+<h1 class="background">Agregar estudiante</h1>
+<form [formGroup]="estudiante" (ngSubmit)="estudianteSubmit()">
+
+    <div class="form-group">
+        <label for="nombreEstudiante">Nombre</label>
+        <input type="text" formControlName="nombreEstudiante" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="carnetEstudiante">Carnet</label>
+        <input type="text" formControlName="carnetEstudiante" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="correoEstudiante">Correo</label>
+        <input type="text" formControlName="correoEstudiante" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="telefonoEstudiante">Teléfono</label>
+        <input type="text" formControlName="telefonoEstudiante" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="contrasennaEstudiante">Contraseña</label>
+        <input type="text" formControlName="contrasennaEstudiante" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <button class="btn-primary">Agregar Estudiante</button>
+    </div>
+</form>
