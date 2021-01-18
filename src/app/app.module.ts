@@ -25,6 +25,7 @@ import { AdminCrea } from './admin-crea/admin-crea.component';
 import { AgregarPersonasComponent } from './agregar-personas/agregar-personas.component';
 import { AgregarCarrerasComponent } from './agregar-carreras/agregar-carreras.component';
 
+import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AgregarCarrerasComponent } from './agregar-carreras/agregar-carreras.co
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    PdfViewerModule,
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
     { path: 'student-docs', component: VisualizeDocsComponent },

@@ -4,6 +4,15 @@
   .container {
     background-color: white;
   }
+
+  pdf-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+  }
+  
+  
   
   .page-holder {
     height: 110vh;
@@ -64,5 +73,9 @@ li {
         background-color: #fff;
         border-top: 2px dashed #8c8b8b;
     }
+
+
+
+
     
     
