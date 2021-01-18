@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { cursoCrear } from '../models/crearCurso.model';
+import { CarreraService } from '../services/carrera.service';
+import { SemestreService } from '../services/crearSemestre.service';
+import { CursosService } from '../services/cursos.service';
 
 @Component({
   selector: 'app-gestion-cursos',
@@ -7,14 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionCursosComponent implements OnInit {
   title : string ;
+  cursoCrear: FormGroup;
   listCodCursos: string[];
   listNomCursos:string[];
   listCreditos:string[];
   listCarrera:string[];
+  listCarrerasDisponibles = [];
   verc:boolean;
   crearcurso:boolean;
-
-  constructor() {
+  error: string;
+  
+  constructor( private formBuilder: FormBuilder,
+    private semestreService : SemestreService,
+    private carreraService : CarreraService,
+    private cursoService : CursosService) {
     this.listCarrera= [];
     this.listCodCursos= [];
     this.listCreditos= [];
@@ -25,22 +36,32 @@ export class GestionCursosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.carreraService.getAll().subscribe(data =>{
+      this.listCarrerasDisponibles=data;
+      console.log(this.listCarrerasDisponibles);
+    });
+    this.cursoCrear = this.formBuilder.group({
+      codigo: ['', Validators.required],
+      curso: ['', Validators.required],
+      carreraForm: ['', Validators.required], 
+      creditos: ['', Validators.required]
+    });
   }
 
   vc(){ 
     this.verc=!this.verc;
-    
    }
 
-   ncurso(codigo, curso, creditos, carrera){
-     this.listCodCursos.push(codigo.value);
-     this.listNomCursos.push(curso.value);
-     this.listCreditos.push(creditos.value);
-     this.listCarrera.push(carrera.value);
-     codigo.value='';
-     curso.value='';
-     creditos.value='';
-     carrera.value='';
+   ncurso(){
+    if (this.cursoCrear.invalid) {
+      this.error = "faltan datos" ;
+      return;
+    }
+     this.listCodCursos.push(this.cursoCrear.value["codigo"]);
+     this.listNomCursos.push(this.cursoCrear.value["curso"]);
+     this.listCreditos.push(this.cursoCrear.value["creditos"]);
+     this.listCarrera.push(this.cursoCrear.value["carreraForm"]);
+     this.cursoCrear.reset();
      return false;
    }
 
@@ -69,6 +90,16 @@ export class GestionCursosComponent implements OnInit {
     this.verc=!this.verc;
     this.verc=!this.verc;
     return false;
+   }
+
+   Codigo: string;
+   Nombre: string;
+   Creditos: string;
+   Carrera_ID: number;
+
+   subir(indice : number){
+    console.log("subiendo: " + this.listNomCursos[indice]);
+    this.cursoService.postCurso(new cursoCrear(this.listCodCursos[indice],this.listNomCursos[indice],this.listCreditos[indice],this.listCarrera[indice]));
    }
 
    verificar(){

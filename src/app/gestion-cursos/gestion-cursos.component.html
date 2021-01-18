@@ -1,3 +1,4 @@
+<div *ngIf="error" class="msg-error">{{error}}</div>
 <div class="background">
     <h1>
       {{title}}
@@ -11,20 +12,37 @@
     </button>
   
     <div *ngIf="crearcurso">
-      <form  (submit)="ncurso(codigo, curso, creditos, carrera)">
-        <input class ="inputs" #codigo type="text" name="codcurso" placeholder="codigo">
-      </form>
+
+      <form [formGroup]="cursoCrear" (ngSubmit)="ncurso()">
+
+        <div class="form-group">
+          <label for="codigo">Codigo</label>
+          <input type="text" formControlName="codigo" class="form-control" />
+        </div>
   
-      <form (submit)="ncurso(codigo, curso, creditos, carrera)">
-        <input class ="inputs" #curso type="text" name="nomcurso" placeholder="curso">
-      </form>
-  
-      <form (submit)="ncurso(codigo, curso, creditos, carrera)">
-        <input class ="inputs" #creditos type="text" name="creditos" placeholder="creditos">
-      </form>
-  
-      <form (submit)="ncurso(codigo, curso, creditos, carrera)">
-        <input class ="inputs" #carrera type="text" name="carrera" placeholder="carrera">
+        <div class="form-group">
+          <label for="curso">Nombre Curso</label>
+          <input type="text" formControlName="curso" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="curso">Créditos</label>
+          <input type="text" formControlName="creditos" class="form-control" />
+        </div>
+
+        <div>
+          <label for="carreras">Carrera</label>
+            <select formControlName="carreraForm" id="carrera">
+              <option *ngFor="let carrera of listCarrerasDisponibles; let i = index" [value]="listCarrerasDisponibles[i]['ID']">
+                {{listCarrerasDisponibles[i]["Nombre"]}}
+              </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button class="btn-primary">Agregar Curso</button>
+        </div>
+
       </form>
     </div>
   
@@ -43,8 +61,8 @@
         <li>Carrera: {{listCarrera[i]}}
         </li>
   
-        <button (click)="delCurso(i)" class="btndes">Deshabilitar curso</button>
-  
+        <button (click)="delCurso(i)" class="btndes">Eliminar curso</button>
+        <button (click)="subir(i)" class="btndes">Subir curso</button>
       </ul>
   
     </div>
