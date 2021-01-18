@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TeacherCourseService } from 'src/app/services/teacher-course.service';
+import { TeacherDocumentsService } from 'src/app/services/teacher-documents.service';
+import { TeacherEvaluationService } from 'src/app/services/teacher-evaluation.service';
+import { TeacherHeadingsService } from 'src/app/services/teacher-headings.service';
 
 @Component({
   selector: 'app-index',
@@ -8,31 +12,83 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
 
-  cursos: Array<{code: number, name: string, credits: number,
-  carreer: string, group: number}> = [
-    {code: 1, name: 'Course1', credits: 4, carreer: 'CE', group: 1},
-    {code: 2, name: 'Course2', credits: 3, carreer: 'CE', group: 5},
-    {code: 3, name: 'Course3', credits: 2, carreer: 'CE', group: 10},
-    {code: 4, name: 'Course4', credits: 1, carreer: 'CE', group: 15},
-    {code: 5, name: 'Course5', credits: 2, carreer: 'CE', group: 20},
-  ];
+  cursos: Array<{Curso_Codigo: number, Sem_Periodo: string, Grupo: number,
+  Sem_Anno: string}> = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private teacherCourseService: TeacherCourseService, 
+    private teacherDocumentService: TeacherDocumentsService, private teacherEvaluationService: TeacherEvaluationService,
+    private teacherHeadingsService: TeacherHeadingsService) { }
 
   ngOnInit(): void {
+    
+    for(let course of this.teacherCourseService.courses){
+      this.cursos.push(course);
+    }
+    
+    
   }
 
-  ToDocuments(courseCode: number){
-    this.router.navigate(['t-index/documents', courseCode]);
+  ToDocuments(course: any){
+    
+    const courseDoc = course;
+
+    this.teacherDocumentService.courseGroup = courseDoc.Grupo;
+    this.teacherDocumentService.courseCode = courseDoc.Curso_Codigo;
+    this.teacherDocumentService.semCourse = courseDoc.Sem_Periodo;
+    this.teacherDocumentService.yearCourse = courseDoc.Sem_Anno;
+    
+    this.teacherDocumentService.getFolders().subscribe((resp: any) => {
+      
+      const answer = resp;
+      
+      for(let folder of answer){
+        
+        this.teacherDocumentService.folders.push(folder.Nombre);
+      }
+      
+      this.router.navigate(['t-index/documents', courseDoc.Curso_Codigo]);
+      
+    });
+    
   }
 
-  ToHeadings(courseCode: number){
-    this.router.navigate(['t-index/headings', courseCode]);
+  ToHeadings(course: any){
+
+
+    this.teacherHeadingsService.courseGroup = course.Grupo;
+    this.teacherHeadingsService.courseCode = course.Curso_Codigo;
+    this.teacherHeadingsService.semCourse = course.Sem_Periodo;
+    this.teacherHeadingsService.yearCourse = course.Sem_Anno;
+
+    this.teacherHeadingsService.getHeadings().subscribe((resp: any) => {
+
+      const answer = resp;
+      
+      
+      for(let heading of answer){
+        
+        this.teacherHeadingsService.headings.push(heading);
+      }
+      
+
+      this.router.navigate(['t-index/headings', course.Curso_Codigo]);
+      
+    });
+
+    
+
   }
 
 
   ToEvaluation(courseCode: number){
+
     this.router.navigate(['t-index/evaluation', courseCode]);
+  }
+
+
+  goTeacherIndex(){
+    
+
   }
 
 }

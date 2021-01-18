@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <html>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -6,6 +7,43 @@
         </nav>
     </header>
     <body>
-        <h4 class="ml-3 mt-3">Carpetas -></h4>
+        <h4 class="ml-3 mt-3">Carpetas -> {{folder}}</h4>
+        <label class="ml-3" for="document">
+            <b>Agregar Documento: </b> <input type="file" (change)="handleUpload($event)">
+        </label>
+        <hr>
+        <div class="container-fluid ml-3 mt-2">
+            <div class="container-fluid ml-3">
+                <div class="row">
+                  <div class="col-sm">
+                    <b>Nombre del documento</b>
+                  </div>
+                  <div class="col-sm">
+                    <b>Fecha de subida</b>
+                  </div>
+                  <div class="col-sm">
+                    <b>Tamaño</b>
+                  </div>
+                </div>
+            </div>
+            <div class="row ml-3" *ngFor="let doc of docs">
+                <div class="col-sm">
+                    <a href="javascript:undefined" style="font-size: 19px; margin-right: 10px;" (click)="visualizeDoc(doc)">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-fill" viewBox="0 0 18 16">
+                        <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z"/>
+                        </svg>
+                        <b>{{doc.Nombre}}</b>
+                    </a> 
+                    <button (click)="deleteDoc(doc)" class="btn"><i class="fa fa-trash"></i></button>
+                </div>
+                <div class="col-sm">
+                  {{doc.Fecha_Subida}}
+                </div>
+                <div class="col-sm">
+                    {{doc.Tamanno}} Bytes
+                </div>
+            </div>
+            <br>
+        </div>
     </body>
 </html>
