@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserLoginService {
 
-  ipadress: string = 'http://18.221.236.186/api/';
+  ipadress: string = 'http://18.217.104.67/api/';
 
 
   constructor(private http: HttpClient) { }
