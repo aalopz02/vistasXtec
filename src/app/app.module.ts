@@ -25,6 +25,7 @@ import { AdminCrea } from './admin-crea/admin-crea.component';
 import { AgregarPersonasComponent } from './agregar-personas/agregar-personas.component';
 import { AgregarCarrerasComponent } from './agregar-carreras/agregar-carreras.component';
 import { CreateEvaluationComponent } from './teacher/evaluation/create-evaluation/create-evaluation.component';
+import { GestionNoticiasComponent } from './gestion-noticias/gestion-noticias.component';
 
 import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 
@@ -60,6 +61,7 @@ import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
     PdfViewerModule,
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
+    {path :'gestion-noticias', component : GestionNoticiasComponent},
     { path: 'student-docs', component: VisualizeDocsComponent },
     { path: 'student-doc', component: StudentDocsComponent },
     { path: 'student-main', component: StudentMainComponent},
