@@ -24,6 +24,7 @@ import { VentanaAdminComponent } from './ventana-admin/ventana-admin.component';
 import { AdminCrea } from './admin-crea/admin-crea.component';
 import { AgregarPersonasComponent } from './agregar-personas/agregar-personas.component';
 import { AgregarCarrerasComponent } from './agregar-carreras/agregar-carreras.component';
+import { CreateEvaluationComponent } from './teacher/evaluation/create-evaluation/create-evaluation.component';
 
 import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
 
@@ -48,7 +49,8 @@ import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
     VentanaAdminComponent,
     AdminCrea,
     AgregarPersonasComponent,
-    AgregarCarrerasComponent
+    AgregarCarrerasComponent,
+    CreateEvaluationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),

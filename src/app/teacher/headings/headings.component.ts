@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeacherEvaluationService } from 'src/app/services/teacher-evaluation.service';
 import { TeacherHeadingsService } from 'src/app/services/teacher-headings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-headings',
@@ -20,7 +21,7 @@ export class HeadingsComponent implements OnInit {
   
 
   constructor(private teacherHeadingsService: TeacherHeadingsService,
-    private teacherEvaluationService: TeacherEvaluationService) {
+    private teacherEvaluationService: TeacherEvaluationService, private router: Router) {
    }
 
   ngOnInit(): void {
@@ -73,7 +74,7 @@ export class HeadingsComponent implements OnInit {
         }
       }
 
-      //this.completeHeadingCreation(newHeadingValue);
+      this.completeHeadingCreation(newHeadingValue);
       
     }
     
@@ -121,7 +122,11 @@ export class HeadingsComponent implements OnInit {
 
     return this.teacherEvaluationService.getEvaluations().subscribe((resp:any) => {
       console.log(resp);
-    })
+    const evaluationsAvaibable = resp;
+    this.teacherEvaluationService.evaluationList = evaluationsAvaibable;
+    this.router.navigate( ['t-index/evaluation/', this.teacherEvaluationService.courseCode]);
+
+  });
 
   }
 

@@ -8,9 +8,28 @@
     <body>
         <h4 class="ml-3 mt-3">Evaluaciones</h4>
         <hr>
-        <div class="container-fluid ml-3 mt-4">
+        <button type="button" (click)="newEvaluation()" class="btn btn-secondary ml-3 mt-2">Agregar Evaluacion</button>
+        <hr>
+        <div class="container-fluid ml-3 mt-2">
             <div class="row">
-                <a href="#">item</a> <br>
+                <div class="col">
+                    <b>Nombre de la evaluación</b>
+                </div>
+                <div class="col">
+                    <b>Peso</b>
+                </div>
+            </div>
+            <div class="row mt-3" *ngFor="let evaluation of evaluationList">
+                <div class="col">
+                    <a  href="javascript:undefined" style="font-size: 19px;" (click)="evaluationPage(evaluation)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace-reverse-fill" viewBox="0 0 16 16">
+                        <path d="M0 3a2 2 0 0 1 2-2h7.08a2 2 0 0 1 1.519.698l4.843 5.651a1 1 0 0 1 0 1.302L10.6 14.3a2 2 0 0 1-1.52.7H2a2 2 0 0 1-2-2V3zm9.854 2.854a.5.5 0 0 0-.708-.708L7 7.293 4.854 5.146a.5.5 0 1 0-.708.708L6.293 8l-2.147 2.146a.5.5 0 0 0 .708.708L7 8.707l2.146 2.147a.5.5 0 0 0 .708-.708L7.707 8l2.147-2.146z"/>
+                      </svg><b>{{evaluation.Nombre}}</b>
+                    </a> 
+                </div>
+                <div class="col">
+                    {{evaluation.Peso}} %
+                </div>
+                <br>
             </div>
         </div>
         <hr>

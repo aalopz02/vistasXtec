@@ -1,19 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherEvaluationService } from 'src/app/services/teacher-evaluation.service';
 
 @Component({
   selector: 'app-evaluation',
   templateUrl: './evaluation.component.html',
   styleUrls: ['./evaluation.component.css']
 })
-
-/**
- * Componente para manejar evaluaciones
- */
 export class EvaluationComponent implements OnInit {
 
-  constructor() { }
+  evaluationList: any = [];
+
+  constructor(private teacherEvaluationService: TeacherEvaluationService) { }
+
+
 
   ngOnInit(): void {
+
+    this.evaluationList = this.teacherEvaluationService.evaluationList;
+
+  }
+
+  newEvaluation(){
+
+  }
+
+  evaluationPage(evaluation: any){
+
+    this.teacherEvaluationService.getEvaluation(evaluation).subscribe((resp: any) => {
+      console.log(resp);
+    });
   }
 
 }

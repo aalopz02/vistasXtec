@@ -12,7 +12,7 @@ import { HttpParams } from '@angular/common/http';
 
 // Sevicio para los cursps
 export class StudentCourseService {
- 
+  carnet="";
 /**
  * Creates an instance of student course service.
  * @param http 
@@ -27,7 +27,7 @@ constructor(private http: HttpClient) { }
    */
   getAll(carnet:string) {
     //esto get para las actividades de un usuario loggeado
-    return this.http.get<any[]>(this.url + `/` + "api/CURSO_IMPARTIDO/Estudiante/" + carnet);
+    return this.http.get<any[]>(this.url + '/' + "api/CURSO_IMPARTIDO/Estudiante/" + carnet);
   }
 }
 
