@@ -51,7 +51,8 @@ import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
     AdminCrea,
     AgregarPersonasComponent,
     AgregarCarrerasComponent,
-    CreateEvaluationComponent
+    CreateEvaluationComponent,
+    GestionNoticiasComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),
@@ -61,7 +62,7 @@ import  {  PdfViewerModule  }  from  'ng2-pdf-viewer';
     PdfViewerModule,
     RouterModule.forRoot([
     { path: 'gestion-cursos', component: GestionCursosComponent },
-    {path :'gestion-noticias', component : GestionNoticiasComponent},
+    { path :'gestion-noticias', component : GestionNoticiasComponent},
     { path: 'student-docs', component: VisualizeDocsComponent },
     { path: 'student-doc', component: StudentDocsComponent },
     { path: 'student-main', component: StudentMainComponent},
