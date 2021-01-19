@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLoginService } from '../services/user-login.service';
 import {Md5} from 'ts-md5/dist/md5';
-import { StudentCourseService } from './../Student/student-services/student-course.service';
+import { StudentCourseService } from '../Student/student-services/student-course.service';
 import { TeacherCourseService } from '../services/teacher-course.service';
 
 @Component({

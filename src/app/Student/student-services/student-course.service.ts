@@ -15,7 +15,7 @@ export class StudentCourseService {
 
   getAll(carnet:string) {
     //esto get para las actividades de un usuario loggeado
-    return this.http.get<any[]>(this.url + `/` + "api/CURSO_IMPARTIDO/Estudiante/" + carnet);
+    return this.http.get<any[]>(this.url + '/' + "api/CURSO_IMPARTIDO/Estudiante/" + carnet);
   }
 }
 

@@ -8,6 +8,8 @@ export class TeacherEvaluationService {
 
   headingIn: string;
 
+  evaluationList: any[] = [];
+
   courseGroup: string;
   courseCode: string;
   semCourse: string;
@@ -23,6 +25,14 @@ export class TeacherEvaluationService {
 
     return this.http.get(this.evaluacionApiAdress + this.headingIn + '/' 
     + this.courseGroup +'/' + this.courseCode +'/' + this.semCourse +'/' + this.yearCourse);
+
+  }
+
+  getEvaluation(evaluation: any){
+    
+    const noSpaceName = evaluation.Nombre.replace(/\s/g, "");
+    return this.http.get(this.evaluacionApiAdress + this.headingIn + '/' 
+    + this.courseGroup +'/' + this.courseCode +'/' + this.semCourse +'/' + this.yearCourse + '/' + evaluation.Nombre);
 
   }
 

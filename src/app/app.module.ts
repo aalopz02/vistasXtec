@@ -22,6 +22,8 @@ import { DocumentsComponent } from './teacher/documents/documents.component';
 import { HeadingsComponent } from './teacher/headings/headings.component';
 import { EvaluationComponent } from './teacher/evaluation/evaluation.component';
 import { FolderComponent } from './teacher/documents/folder/folder.component';
+import { CreateEvaluationComponent } from './teacher/evaluation/create-evaluation/create-evaluation.component';
+
 
 
 
@@ -42,7 +44,9 @@ import { FolderComponent } from './teacher/documents/folder/folder.component';
     StudentSendEvalComponent,
     StudentGradesComponent,
     StudentFileComponent,
-    StudentDocsComponent
+    StudentDocsComponent,
+    CreateEvaluationComponent,
+    
   ],
   imports: [
     BrowserModule.withServerTransition({appId:'ng-cli-universal'}),

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherEvaluationService } from 'src/app/services/teacher-evaluation.service';
 import { TeacherHeadingsService } from 'src/app/services/teacher-headings.service';
 
@@ -17,7 +18,7 @@ export class HeadingsComponent implements OnInit {
   
 
   constructor(private teacherHeadingsService: TeacherHeadingsService,
-    private teacherEvaluationService: TeacherEvaluationService) {
+    private teacherEvaluationService: TeacherEvaluationService, private router: Router) {
    }
 
   ngOnInit(): void {
@@ -64,13 +65,13 @@ export class HeadingsComponent implements OnInit {
         if(newHeadingsValues[i] != this.headings[i].porc){
           
           this.headings[i].porc = newHeadingsValues[i];
-          console.log('Dif', this.headings[i]);
+          
           this.updateHeading(this.headings[i]);
            
         }
       }
 
-      //this.completeHeadingCreation(newHeadingValue);
+      this.completeHeadingCreation(newHeadingValue);
       
     }
     
@@ -89,7 +90,7 @@ export class HeadingsComponent implements OnInit {
   }
 
 
-   completeHeadingCreation(newHeadingValue: number){
+  completeHeadingCreation(newHeadingValue: number){
     this.teacherHeadingsService.createNewHeading(this.newHeadingName, newHeadingValue).subscribe((resp: any) => {
       console.log(resp);
       if(resp == '¡Rubro creado correctamente!'){
@@ -118,9 +119,15 @@ export class HeadingsComponent implements OnInit {
 
     return this.teacherEvaluationService.getEvaluations().subscribe((resp:any) => {
       console.log(resp);
-    })
+      const evaluationsAvaibable = resp;
+      this.teacherEvaluationService.evaluationList = evaluationsAvaibable;
+      this.router.navigate( ['t-index/evaluation/', this.teacherEvaluationService.courseCode]);
+
+    });
 
   }
+
+
 
 
 
