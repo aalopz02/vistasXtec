@@ -6,6 +6,9 @@ import { profesorModel } from '../models/profesor.model';
 @Injectable({
   providedIn: 'root'
 })
+
+//Servicio que se comunica con el api de mongo para operar profesores
+
 export class ProfesorService {
   
   address: string = 'http://18.217.104.67/api/';

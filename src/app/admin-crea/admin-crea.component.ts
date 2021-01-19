@@ -22,7 +22,7 @@ import { SemestreService } from '../services/crearSemestre.service';
     templateUrl: './admin-crea.component.html',
     styleUrls: ['./admin-crea.component.css']
   })
-  //Component para agregar una carrera
+  //Component para iniciar un semestre
   export class AdminCrea implements OnInit {
     // Forms y componentes
     semestre: FormGroup;
@@ -119,7 +119,7 @@ import { SemestreService } from '../services/crearSemestre.service';
   }
     
   /**
-   * Determines whether submit on de carrera
+   * Listener de form para semestre
    */
     semestreSubmit() {
         if (this.semestre.invalid) {
@@ -132,6 +132,9 @@ import { SemestreService } from '../services/crearSemestre.service';
         this.error = "";
     }
 
+    /**
+     * Listener de form de curso
+     */
     cursoSubmit() {
         if (this.curso.invalid){
           console.log(this.curso.value);
@@ -154,6 +157,9 @@ import { SemestreService } from '../services/crearSemestre.service';
         this.error = "";
       }
 
+      /**
+       * Listener de form de grupo
+       */
     grupoSubmit() {
         if (this.grupo.invalid) {
             return;
@@ -167,6 +173,9 @@ import { SemestreService } from '../services/crearSemestre.service';
         this.error = "";
       }
     
+      /**
+       * Función que se llama para agregar un curso completo al semestre seleccionado
+       */
     subirSemestre(){
       console.log("semestre");
       this.cursosCreados.forEach(element => {
@@ -174,6 +183,9 @@ import { SemestreService } from '../services/crearSemestre.service';
       });
     }
 
+    /**
+     * Listener si el semestre se carga por archivo
+     */
     done(){
         this.loadfile.cargarArchivo(this.excel);
         console.log("done");

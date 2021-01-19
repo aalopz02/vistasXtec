@@ -8,7 +8,7 @@ import { HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-// Servicio de carga de excel
+// Servicio de carga de excel del api de sql
 export class excelService {
   constructor(private http: HttpClient) { }
 

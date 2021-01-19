@@ -6,6 +6,9 @@ import { semestreModel } from '../models/semestre.model';
 @Injectable({
   providedIn: 'root'
 })
+
+//Servicio para comunicarse con el api de sql para operar semestres
+
 export class SemestreService {
   address: string = 'http://3.138.203.114/api/';
 

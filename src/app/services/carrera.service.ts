@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+//Servicio para comunicarse con el api de sql para operar carreras
 export class CarreraService {
   address: string = 'http://3.138.203.114/api/';
 

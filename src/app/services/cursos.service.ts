@@ -5,6 +5,9 @@ import { cursoCrear } from '../models/crearCurso.model';
 @Injectable({
   providedIn: 'root'
 })
+
+//Servicio para comunicarse con el api de sql para operar cursos
+
 export class CursosService {
   address: string = 'http://3.138.203.114/api/';
 

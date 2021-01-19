@@ -10,6 +10,9 @@ import { CursosService } from '../services/cursos.service';
   templateUrl: './gestion-cursos.component.html',
   styleUrls: ['./gestion-cursos.component.css']
 })
+
+//Componente para agregar cursos
+
 export class GestionCursosComponent implements OnInit {
   title : string ;
   cursoCrear: FormGroup;
@@ -35,6 +38,9 @@ export class GestionCursosComponent implements OnInit {
     this.crearcurso=false;
   }
 
+  /**
+   * Rellenado de datos default
+   */
   ngOnInit(): void {
     this.carreraService.getAll().subscribe(data =>{
       this.listCarrerasDisponibles=data;
@@ -48,10 +54,16 @@ export class GestionCursosComponent implements OnInit {
     });
   }
 
+  /**
+   * Método para hacer toogle entr cursos visibles o no
+   */
   vc(){ 
     this.verc=!this.verc;
    }
 
+   /**
+    * Método listener del form, agrega a una lista cada dato digitado
+    */
    ncurso(){
     if (this.cursoCrear.invalid) {
       this.error = "faltan datos" ;
@@ -65,10 +77,16 @@ export class GestionCursosComponent implements OnInit {
      return false;
    }
 
+   /**
+   * Método para hacer toogle entr cursos visibles o no
+   */
    crearCurso(){
      this.crearcurso=!this.crearcurso;
    }
 
+   /**
+   * Método para borrar un curso de la lista 
+   */
    delCurso(posicion){
      const listCodCursosaux=[];
      const listNomCursosaux=[];
@@ -92,15 +110,15 @@ export class GestionCursosComponent implements OnInit {
     return false;
    }
 
-   Codigo: string;
-   Nombre: string;
-   Creditos: string;
-   Carrera_ID: number;
-
+   /**
+    * Método que llama al servicio para crear un curso
+    * @param indice : índice del curso seleccionado
+    */
    subir(indice : number){
     console.log("subiendo: " + this.listNomCursos[indice]);
     this.cursoService.postCurso(new cursoCrear(this.listCodCursos[indice],this.listNomCursos[indice],this.listCreditos[indice],this.listCarrera[indice]));
    }
+
 
    verificar(){
      console.log(this.verc)

@@ -7,6 +7,9 @@ import { CarreraService } from '../services/carrera.service';
   templateUrl: './agregar-carreras.component.html',
   styleUrls: ['./agregar-carreras.component.css']
 })
+
+//Componente para agregar una carrera nueva
+
 export class AgregarCarrerasComponent implements OnInit {
   carrera: FormGroup;
   error : string;

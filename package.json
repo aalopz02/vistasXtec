@@ -1,4 +1,4 @@
-npm install ng2-pdf-viewer --save{
+{
   "name": "vistas-xtec",
   "version": "0.0.0",
   "scripts": {

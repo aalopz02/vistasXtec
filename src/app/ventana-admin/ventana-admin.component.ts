@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./ventana-admin.component.css']
 })
 
+//Clase para mostrar un menú para las cosas que un administrador puede hacer
 export class VentanaAdminComponent implements OnInit {
     title : string ;
     gestion_cursos : string ;

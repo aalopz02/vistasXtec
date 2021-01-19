@@ -8,6 +8,9 @@ import { ProfesorService } from '../services/profesores-service';
   templateUrl: './agregar-personas.component.html',
   styleUrls: ['./agregar-personas.component.css']
 })
+
+//Componente para agregar un profesor nuevo o un estudiante nuevo
+
 export class AgregarPersonasComponent implements OnInit {
   profesor: FormGroup;
   estudiante: FormGroup;
@@ -35,7 +38,7 @@ export class AgregarPersonasComponent implements OnInit {
   });
 
   }
-//String cedula, String nombre, String correo, String contrasenna
+
   profesorSubmit() {
     if (this.profesor.invalid) {
         this.error = "falta rellenar datos de profesor";

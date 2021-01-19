@@ -14,6 +14,8 @@ import { StudentService } from './../Student/student-services/student.service';
 })
 export class LoginComponent implements OnInit {
 
+  //Componente de log in
+
   userType: number = 1; 
   LogInForm: FormGroup;
   error: string;
@@ -41,6 +43,10 @@ export class LoginComponent implements OnInit {
     this.userType = 3;
   }
 
+  /**
+   * Listener del form, llama al servicio para comparar contraseñas y redirigir acorde a como se seleccionó
+   * @param formData 
+   */
   onSubmit(formData: any){
     
     this.userLoginService.LogIn(this.userType, formData.userID).subscribe((resp: any) => {
@@ -84,7 +90,10 @@ export class LoginComponent implements OnInit {
       
     });
   }
-
+  
+  /**
+   * Inicializa los datos que se van a mostrar si se hace login como profesor
+   */
   goTeacherIndex(){
     this.teacherCourseService.getCourses().subscribe((resp: any) => {
       this.teacherCourseService.courses = resp;
