@@ -36,6 +36,13 @@ export class StudentSendEvalComponent implements OnInit {
    }
 
 
+  /**
+   * Base64s to blob
+   * @param b64Data string de la codificacion en base64
+   * @param [contentType] 
+   * @param [sliceSize] 
+   * @returns  blob
+   */
   public base64ToBlob(b64Data, contentType='', sliceSize=512) {
     b64Data = b64Data.replace(/\s/g, ''); //IE compatibility...
     let byteCharacters = atob(b64Data);
@@ -53,10 +60,15 @@ export class StudentSendEvalComponent implements OnInit {
     return new Blob(byteArrays, {type: contentType});
 }
 
-downloadFile(b64encodedString: string) {
+/**
+ * Descargar un file
+ * @param b64encodedString string en base64
+ * @param filename nombre del archivo
+ */
+downloadFile(b64encodedString: string, filename:string) {
   if (b64encodedString) {
-    var blob = this.base64ToBlob(b64encodedString, 'text/plain');
-    saveAs(blob, "test.pdf");
+    var blob = this.base64ToBlob( b64encodedString.substring(23), 'text/plain');
+    saveAs(blob, filename);
   }
 }
 
@@ -93,6 +105,21 @@ handleUpload(event: any) {
 
 } */
 
+/**
+ * Determines whether click1 on
+ * @param nombre 
+ */
+onClick1(nombre:string){
 
+  this.downloadFile("","");
+}
+
+/**
+ * Determines whether click2 on
+ * @param nombre 
+ */
+onClick2(nombre:string){
+
+}
   
 }
