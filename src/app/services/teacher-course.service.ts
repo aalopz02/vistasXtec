@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
+/**
+ * Servicio para obtener los cursos de un profesor
+ */
 export class TeacherCourseService {
 
   id: string;

@@ -16,7 +16,6 @@ export class TeacherEvaluationService {
   evaluacionApiAdress: string = 'http://3.138.203.114/api/EVALUACION/Profesor/';
 
   constructor(private http: HttpClient) { }
-  //api/EVALUACION/Profesor/{rubro_nombre}/{curso_grupo}/{curso_codigo}/{sem_periodo}/{sem_anno}/{nombre}"
 
   //Método para obtener todos los tipos de evaluaciones que existen en un rubro, de un curso determinado
   getEvaluations(){

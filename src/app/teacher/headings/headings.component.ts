@@ -7,6 +7,9 @@ import { TeacherHeadingsService } from 'src/app/services/teacher-headings.servic
   templateUrl: './headings.component.html',
   styleUrls: ['./headings.component.css'],
 })
+/**
+ * Componente para manejar los rubros de evaluaciones
+ */
 export class HeadingsComponent implements OnInit {
 
   headings: any[] = [];

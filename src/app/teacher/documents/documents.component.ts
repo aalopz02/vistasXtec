@@ -7,6 +7,9 @@ import { TeacherDocumentsService } from 'src/app/services/teacher-documents.serv
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.css']
 })
+/**
+ * Clase para mostrar los documentos para un profesor y un curso
+ */
 export class DocumentsComponent implements OnInit {
 
 

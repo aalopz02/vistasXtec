@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Servicio para obtener las carpetas para los cursos de un profesor y los documentos de estas
+ */
 export class TeacherDocumentsService {
 
   apiAdress: string = 'http://3.138.203.114/api/CARPETA/';

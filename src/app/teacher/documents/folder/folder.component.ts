@@ -8,6 +8,9 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./folder.component.css'],
 
 })
+/**
+ * Componente para mostrar las carpetas de un profesor para cada curso
+ */
 export class FolderComponent implements OnInit {
 
   constructor(private teacherDocumentsService: TeacherDocumentsService) { }

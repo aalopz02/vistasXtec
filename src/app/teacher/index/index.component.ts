@@ -10,6 +10,10 @@ import { TeacherHeadingsService } from 'src/app/services/teacher-headings.servic
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
+
+/**
+ * Página de inicio para profesor
+ */
 export class IndexComponent implements OnInit {
 
   cursos: Array<{Curso_Codigo: number, Sem_Periodo: string, Grupo: number,

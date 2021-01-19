@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Servicio para crear nuevas evaluaciones
+ */
 export class TeacherHeadingsService {
 
   courseGroup: string;
