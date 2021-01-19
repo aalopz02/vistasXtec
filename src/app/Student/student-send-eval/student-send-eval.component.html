@@ -13,7 +13,7 @@
                   
                   <div class="jumbotron" >
                       <h1 class="display-5" align="center">Evaluaciones</h1>
-               <ul>
+               <ul class="list-group"  *ngFor="let ev of eval; let i = index">
                 <br>
                 <hr class="style15">
                 <br>
@@ -21,13 +21,13 @@
                 <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
                 <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
                 <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-2-2a.5.5 0 0 0-.708 0l-2 2a.5.5 0 1 0 .708.708L7.5 7.707V11.5a.5.5 0 0 0 .5.5z"/>
-              </svg>  number 1 <span class="rightlo"><input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="handleUpload($event)">   
+              </svg>  Nombre: {{eval[i].Nombre}}, Fecha: {{eval[i].Fecha}} <span class="rightlo"><input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="handleUpload($event)">   
             
-                <button type="button" class="btn btn-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+                <button type="button" class="btn btn-dark" (click)="onClick1(eval[i].Nombre)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
                   </svg></button>
-                <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                <button type="button" class="btn btn-success" (click)="onClick2(eval[i].Nombre)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
                   </svg></button>
@@ -35,10 +35,6 @@
               <br>
               <hr class="style15">
               <br>
-              <li> number 2</li>
-              <li> number 3 </li>
-              <li> number 4 </li>
-              <li> number 5 </li>
           </ul>
                     </div>
               </div>
